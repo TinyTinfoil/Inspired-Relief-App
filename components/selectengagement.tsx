@@ -1,11 +1,11 @@
-import { SafeAreaView, TouchableOpacity, Text } from 'react-native';
+import { SafeAreaView, TouchableOpacity, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import styles from '../stylesheet';
 
 const SelectEngagement = ({ navigation }) => {
     const [selectedId, setSelectedId] = useState(null);
-    const titles=['I want to organize group and individual sessions',
-                    'I want to receive individual support and attend sessions',
+    const titles=['Organize group and individual sessions',
+                    'Receive individual support and attend sessions',
                     'Other/I\'m not sure'];
     const descs = ['Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.']
@@ -19,9 +19,9 @@ const SelectEngagement = ({ navigation }) => {
                 <TouchableOpacity
                     key={id}
                     onPress={() => {setSelectedId(id); console.log(selectedId);}}
-                    style={[buttonStyle, {width:"80%", padding: "10%"}]}>
+                    style={[buttonStyle, {width:"80%", padding: "5%"}]}>
                     <Text style={[styles.IRButtonText, {paddingBottom: "5%"}]}>{title}</Text>
-                    <Text style={styles.bodyText}>{desc}</Text>
+                    <Text style={[styles.bodyTextLeft, {color: 'white'}]}>{desc}</Text>
                 </TouchableOpacity>
             );
         } else {
@@ -68,6 +68,5 @@ const SelectEngagement = ({ navigation }) => {
         </SafeAreaView>
     );
 };
-
 
 export default SelectEngagement;
