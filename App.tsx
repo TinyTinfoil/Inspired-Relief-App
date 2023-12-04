@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { useFonts, Montserrat_500Medium, Montserrat_600SemiBold, Montserrat_300Light } from '@expo-google-fonts/montserrat'
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -27,6 +28,11 @@ const pageVariants = {
 };
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    Montserrat_500Medium,
+    Montserrat_300Light,
+    Montserrat_600SemiBold
+  });
   return (
     <NavigationContainer>
       <Stack.Navigator 
