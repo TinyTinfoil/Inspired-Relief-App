@@ -10,7 +10,7 @@ let db = firebase.firestore(app);
 
 import { get_location } from './get_location';
 
-const radiusInM = 50 * 1000;
+const radiusInM = 50;
 
 function filter_false_loc(doc,center): boolean{
     const lat = doc.get('lat');
@@ -22,17 +22,18 @@ function filter_false_loc(doc,center): boolean{
     return distanceInM <= radiusInM;
 }
 
+function onlyUnique(value, index, array) {
+    return array.indexOf(value) === index;
+  }
+
 export async function get_data(center: number[]){
     // var loc = await get_location();
     // const loc = null
     // if (loc?.coords?.latitude == null) { loc.coords.latitude = 0; loc.coords.longitude = 0; }
-
-    
-
     const bounds = geofire.geohashQueryBounds(center, radiusInM);
     const promises: Promise<firebase.firestore.QuerySnapshot>[] = [];
     for (const b of bounds) {
-        const q = db.collection('helpers').orderBy('loc').limit(20);
+        const q = db.collection('helpers').orderBy('loc').limit(5);
         // console.log((await q.get()).docs.forEach(doc => console.log(doc.data())))
         promises.push(q.get());
     }
@@ -44,7 +45,8 @@ export async function get_data(center: number[]){
         data = data.concat(snap.docs);
     }
     // filter false location positives
-        data = data.filter(doc => filter_false_loc(doc, center));
+        data = data.filter(onlyUnique).filter(doc => filter_false_loc(doc, center));
     })
     return await data.map(doc => doc.data());
 }
+
