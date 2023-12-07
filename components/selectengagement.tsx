@@ -1,8 +1,9 @@
-import { SafeAreaView, TouchableOpacity, Text, View } from 'react-native';
+import { SafeAreaView, TouchableOpacity, Text, View, ImageBackground } from 'react-native';
 import React, { useState } from 'react';
 import styles from '../stylesheet';
 
 const SelectEngagement = ({ navigation }) => {
+    const image = require('../assets/bgIR.png')
     const [selectedId, setSelectedId] = useState(null);
     const titles=['Organize group and individual sessions',
                     'Receive individual support and attend sessions',
@@ -59,13 +60,16 @@ const SelectEngagement = ({ navigation }) => {
     };
 
     return (
-        <SafeAreaView style={styles.ViewContainer}>
+
+        <ImageBackground source={image}>
+            <SafeAreaView style={{alignItems: 'center', justifyContent: 'center', marginTop: "30%"}}>
             <Text style={styles.leftTitle}>Describe some of the ways you engage with healing?</Text>
             {renderButton(1, titles[0], descs[0])}
             {renderButton(2, titles[1], descs[1])}
             {renderButton(3, titles[2], descs[2])}
             {renderNextButton()}
-        </SafeAreaView>
+            </SafeAreaView>
+        </ImageBackground>
     );
 };
 
