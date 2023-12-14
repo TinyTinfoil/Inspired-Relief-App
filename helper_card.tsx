@@ -1,40 +1,47 @@
-import { FlatList, StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+import { FlatList, StyleSheet, View, Image, Dimensions } from 'react-native';
+import { Text, Card, Button, Icon } from '@rneui/themed';
 import { ResizeMode, Video } from 'expo-av';
 // import VideoPlayer  from 'expo-video-player'
 import WebView from 'react-native-webview';
 export function HelperCard({name, description, video, contact}) {
   return (
-    <View style={styles.container}>
+     <View style={{
+      borderRadius: 5,
+      height: 250,
+      padding: 50,
+      marginLeft: 25,
+      marginRight: 25, }}>
+        <Text style={{fontSize: 30}}>{}</Text>
         <Text style={styles.title}>{name}</Text>
-        <VideoPlayer
+        {/*
+        <Video
           videoProps={{
-          source:{ uri: video }//,
-          //resizeMode: ResizeMode.CONTAIN,
-          //shouldPlay: true,
+            source:{ uri: item.video },
+            resizeMode: ResizeMode.CONTAIN,
+            shouldPlay: true,
+            isLooping: true,
           // style: {margin: 'auto'}
-        }}
-          
-          // style={{ width: Dimensions.get('window').width - 40 , height: 200, videoBackgroundColor: 'transparent',
-          // controlsBackgroundColor: 'red',}}
+          }}
+          style={{ 
+            width: Dimensions.get('window').width - 80, 
+            height: 200, videoBackgroundColor: 'transparent',
+            controlsBackgroundColor: 'black',
+          }}
         />
-        {/* <Video 
-        source={{uri: video}}
-        resizeMode={ResizeMode.COVER}
-        shouldPlay={true}
-        useNativeControls={true}
-        // style={{margin: 'auto'}}
-        /> */}
-        
-        <Text style={styles.paragraph}>{description}</Text>
-        <View style={{position:'relative'}}>
-            {/*@ts-ignore*/}
-            <Image style={styles.logo}
-                    source={require('./assets/favicon.png')}/>
-            <Text>{contact}</Text>
+        <View style={styles.buttons}>
+          <Button
+            title={status.isPlaying ? 'Pause' : 'Play'}
+            onPress={() =>
+              status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
+            }
+          />
         </View>
-    </View>
+        */}
+        <Text style={styles.paragraph}>{description}</Text>
+      </View>
   );
 }
+
 
 const styles = StyleSheet.create({
     container: {

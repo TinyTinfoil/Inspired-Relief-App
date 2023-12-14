@@ -1,12 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native';
-import { get_data } from './get_data';
+import { get_data } from '../get_data';
 import React, { useState } from 'react';
-import { SwiperFlatList } from 'react-native-swiper-flatlist';
 
 
-import { HelperCard } from './helper_card';
-export default function SearchResults() {
+import { HelperCard } from '../helper_card';
+const SearchResults({navigation}) => {
   const [result, setResult] = useState([]);
   const results = get_data([51.5074, 0.1278]);
   results.then(function(value) {
@@ -25,17 +24,18 @@ export default function SearchResults() {
     <View style={styles.container}>
       <Text style={styles.msg}>We found {result.length} Helpers!</Text>
       <StatusBar style="auto" />
-        <SwiperFlatList 
-        index={0}
-        showPagination
-        data={result} 
-        renderItem={({item}) =>
-            <View style={styles.cards}>
-            <HelperCard {...item}/>
-            </View>
-          }
-          horizontal={true}
-        />
+      <FlatList data={result} 
+      renderItem={({item}) =>
+          <View style={styles.cards}>
+          <HelperCard {...item}/>
+          </View>
+        }
+        horizontal={true}
+        pagingEnabled={true}
+        snapToAlignment={"center"}
+        // snapToInterval={Dimensions.get('window').width - 100}
+        decelerationRate={"fast"}
+      />
     </View>
   );
 }
