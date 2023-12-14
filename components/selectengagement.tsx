@@ -61,7 +61,19 @@ const SelectEngagement = ({ navigation }) => {
 
     return (
 
-        <ImageBackground source={image}>
+        <ImageBackground
+            style={{
+                flex: 1,
+                position: 'relative',
+                backgroundColor: '#FFF9F4',
+            }}
+        imageStyle={{
+        resizeMode: 'cover',
+        position: 'absolute',
+        top: 0,
+        bottom: '10%',
+        }}
+          source={image}>
             <SafeAreaView style={{alignItems: 'center', justifyContent: 'center', marginTop: "30%"}}>
             <Text style={styles.leftTitle}>Describe some of the ways you engage with healing?</Text>
             {renderButton(1, titles[0], descs[0])}
