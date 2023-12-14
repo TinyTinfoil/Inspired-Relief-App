@@ -2,10 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native';
 import { get_data } from '../get_data';
 import React, { useState } from 'react';
+import { HelperCard } from './helper_card';
+import { SwiperFlatList } from 'react-native-swiper-flatlist';
 
-
-import { HelperCard } from '../helper_card';
-const SearchResults({navigation}) => {
+const SearchResults = ({ navigation }) => {
   const [result, setResult] = useState([]);
   const results = get_data([51.5074, 0.1278]);
   results.then(function(value) {
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
   }
 });
 
-
+export default SearchResults;

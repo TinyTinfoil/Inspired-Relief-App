@@ -5,7 +5,7 @@ import styles from '../stylesheet';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Import the icon component
 import CustomRadioButton from './radioButton';
 
-const HelperOnboard = ({ navigate }) => {
+const HelperOnboard = ({ navigation }) => {
     const [name, setName] = useState('');
     const [pronouns, setPronouns] = useState('');
     const [email, setEmail] = useState('');
@@ -189,7 +189,7 @@ const HelperOnboard = ({ navigate }) => {
                 </View>
                 <View style={styles.bottomContainer}>
                     <TouchableOpacity style={styles.IRButton}
-                    onPress={() => {} }> 
+                    onPress={() => navigation.navigate('SearchResults') }> 
                         <Text style={styles.IRButtonText}>Next</Text>
                     </TouchableOpacity>
                     <Text style={[styles.bodyText, {fontSize: 12}]}>1/3 Steps</Text>

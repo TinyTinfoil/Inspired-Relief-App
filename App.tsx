@@ -9,6 +9,7 @@ import InfoScreen from './components/info';
 import SelectEngagement from './components/selectengagement';
 import HelperOnboard from './components/helperonboard';
 import SeekerOnboard from './components/seekeronboard';
+import SearchResults from './components/SearchResults';
 
 const Stack = createNativeStackNavigator();
 
@@ -45,6 +46,7 @@ export default function App() {
         <Stack.Screen name='SelectEngagement' component={SelectEngagement} options={{ headerShown: false }} />
         <Stack.Screen name='HelperOnboard' component={HelperOnboard} options={{ headerShown: false }} />
         <Stack.Screen name='SeekerOnboard' component={SeekerOnboard} options={{ headerShown: false }} />
+        <Stack.Screen name='SearchResults' component={SearchResults} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
